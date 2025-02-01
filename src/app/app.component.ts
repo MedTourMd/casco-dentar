@@ -1,23 +1,23 @@
-import { isPlatformBrowser } from "@angular/common";
-import { Component, inject, type OnInit, PLATFORM_ID } from "@angular/core";
+import { Component, inject, type OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
+import { FlowbiteService } from "./core/services/flowbite.service";
+import { PreferencesService } from "./core/services/preferences.service";
 
 @Component({
     selector: "app-root",
-    imports: [RouterOutlet, ToolbarComponent],
+    imports: [ToolbarComponent, RouterOutlet],
     template: `
         <app-toolbar />
         <router-outlet />
     `,
 })
 export class AppComponent implements OnInit {
-    readonly #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    readonly #preferences = inject(PreferencesService);
+    readonly #flowbiteService = inject(FlowbiteService);
 
     ngOnInit() {
-        if (this.#isBrowser) {
-            console.log("Initializing Flowbite...");
-            import("flowbite").then((flowbite) => flowbite.initFlowbite(), console.error);
-        }
+        this.#preferences.activateTheme();
+        this.#flowbiteService.init((flowbite) => flowbite.initFlowbite());
     }
 }
