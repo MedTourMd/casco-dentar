@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { LumberjackService, LumberjackTimeService } from "@ngworker/lumberjack";
-import { type LoggerScopeConfig, loggerScopes, type LogLevel, LogLevels, LogLevelsReversed } from "./logger-scopes";
+import { isScope, loggerScopes, type LogLevel, LogLevels, LogLevelsReversed } from "./logger-scopes";
 
 @Injectable({
     providedIn: "root",
@@ -40,8 +40,8 @@ export class Logger {
 
         if (matches && matches.length > 1) {
             scope = matches[1].toUpperCase();
-            if (scope in loggerScopes) {
-                const featureConfig: LoggerScopeConfig = loggerScopes[scope as keyof typeof loggerScopes];
+            if (isScope(scope)) {
+                const featureConfig = loggerScopes[scope];
 
                 if (featureConfig) {
                     if (!featureConfig.enabled || (featureConfig.level !== undefined && featureConfig.level < level)) {

@@ -33,3 +33,7 @@ export const loggerScopes = {
         level: LogLevels.info,
     },
 } as const satisfies Record<string, LoggerScopeConfig>;
+
+export function isScope(scope: string): scope is keyof typeof loggerScopes {
+    return scope in loggerScopes;
+}

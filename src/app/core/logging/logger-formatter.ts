@@ -1,9 +1,5 @@
 import type { LumberjackLog } from "@ngworker/lumberjack";
-import { loggerScopes } from "./logger-scopes";
-
-// export const loggerColors = {
-//     critical: "\x1B[31m",
-// } as const satisfies Record<LumberjackLogLevel, string>;
+import { isScope, loggerScopes } from "./logger-scopes";
 
 function formatDate(timestamp: number) {
     const date = new Date(timestamp);
@@ -11,9 +7,12 @@ function formatDate(timestamp: number) {
     return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${milliseconds}`;
 }
 
+function getColor(scope?: string) {
+    return scope !== undefined && isScope(scope) ? loggerScopes[scope].color : "";
+}
+
 export function lumberjackFormatLog({ scope, createdAt: timestamp, level, message }: LumberjackLog) {
-    const _scope = scope ? `[${scope}] ` : "";
-    const color =
-        scope !== undefined && scope in loggerScopes ? loggerScopes[scope as keyof typeof loggerScopes].color : "";
-    return `${formatDate(timestamp)} ${level.toUpperCase()} | ${color}${_scope}${message}`;
+    const displayedScope = scope ? `[${scope}] ` : "";
+    const color = getColor(scope);
+    return `${formatDate(timestamp)} ${level.toUpperCase()} | ${color}${displayedScope}${message}`;
 }
