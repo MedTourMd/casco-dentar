@@ -2,7 +2,7 @@ import { Component, inject, type OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { FlowbiteService } from "./core/services/flowbite.service";
-import { PreferencesService } from "./core/services/preferences.service";
+import { ThemeService } from "./core/services/theme.service";
 
 @Component({
     selector: "app-root",
@@ -13,11 +13,11 @@ import { PreferencesService } from "./core/services/preferences.service";
     `,
 })
 export class AppComponent implements OnInit {
-    readonly #preferences = inject(PreferencesService);
+    readonly #themeService = inject(ThemeService);
     readonly #flowbiteService = inject(FlowbiteService);
 
     ngOnInit() {
-        this.#preferences.activateTheme();
+        this.#themeService.activateTheme();
         this.#flowbiteService.init((flowbite) => flowbite.initFlowbite());
     }
 }

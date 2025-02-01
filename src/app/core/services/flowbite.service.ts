@@ -1,17 +1,20 @@
-import { isPlatformBrowser } from "@angular/common";
-import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { Injectable } from "@angular/core";
 import type FlowBiteType from "flowbite";
+import { injectIsBrowser } from "../di-utils";
 
 @Injectable({
     providedIn: "root",
 })
 export class FlowbiteService {
-    readonly #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    readonly #isBrowser = injectIsBrowser();
 
     init(callback: (flowbite: typeof FlowBiteType) => void) {
-        if (this.#isBrowser) {
-            console.log("Initializing Flowbite...");
-            import("flowbite").then((flowbite) => callback(flowbite), console.error);
+        if (!this.#isBrowser) {
+            console.log("Its not browser, skip");
+            return;
         }
+
+        console.log("Initializing Flowbite...");
+        import("flowbite").then((flowbite) => callback(flowbite), console.error);
     }
 }

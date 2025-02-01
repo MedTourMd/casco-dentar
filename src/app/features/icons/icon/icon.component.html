@@ -1,0 +1,5 @@
+@if (svgIcon()) {
+    <div [innerHTML]="svgIcon()"></div>
+} @else {
+    <img [alt]="icon()" [ngSrc]="'icons/' + icon()" fill style="object-fit: contain"/>
+}
