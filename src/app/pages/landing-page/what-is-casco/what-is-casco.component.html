@@ -1,0 +1,49 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="grid max-w-screen-xl h-full px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16">
+        <div class="max-w-screen-md place-self-center mb-8 lg:mb-16">
+            <h2 class="mb-8 text-4xl place-self-center tracking-wide font-extrabold text-gray-900 dark:text-white">
+                Ce este un CASCO dentar?
+            </h2>
+
+            <p class="text-gray-500 text-center sm:text-xl place-self-center dark:text-gray-400">
+                Un CASCO dentar este ca o "asigurare CASCO" pentru dinți. Este un contract prin care plătești o sumă
+                lunară sau anuală, iar în schimb, ai parte de acoperire financiară pentru tratamente stomatologice și o
+                mulțime de alte beneficii.
+            </p>
+        </div>
+
+        <div class="w-full mb-10 p-5 md:p-7 lg:p-10 rounded-lg dark:bg-gray-800 bg-gray-100 inset-shadow-sm"
+             id="benefits">
+            <div class="grid md:grid-cols-2 gap-6">
+                @for (benefit of benefits; track benefit.title) {
+                    <div class="grid grid-cols-5 gap-4">
+                        <div
+                            class="w-full aspect-square col-span-1 dark:bg-gray-700 bg-gray-200 rounded-full flex justify-center items-center">
+                            <app-icon [icon]="benefit.icon"
+                                      class="text-primary-500 dark:text-green-300 w-full p-3 sm:p-7 md:p-3 lg:p-5 xl:p-7"/>
+                        </div>
+
+                        <div class="col-span-4">
+                            <h3 class="mb-2 text-2xl tracking-wide font-extrabold text-gray-900 dark:text-white">
+                                {{ benefit.title }}
+                            </h3>
+
+                            <p class="text-gray-500 sm:text-xl place-self-center dark:text-gray-400">
+                                {{ benefit.details }}
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <iframe
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="mx-auto w-full lg:max-w-screen-xl h-64 rounded-lg sm:h-150 shadow-xl"
+            referrerpolicy="strict-origin-when-cross-origin"
+            src="https://www.youtube.com/embed/xNs2Nr3uM5s?si=ug1jmhYhdX5LYhea"
+            title="YouTube video player"
+        ></iframe>
+    </div>
+</section>

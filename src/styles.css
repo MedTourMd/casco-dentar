@@ -8,17 +8,29 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primary-50: oklch(0.977 0.013 236.62);
-    --color-primary-100: oklch(0.951 0.026 236.824);
-    --color-primary-200: oklch(0.901 0.058 230.902);
-    --color-primary-300: oklch(0.828 0.111 230.318);
-    --color-primary-400: oklch(0.746 0.16 232.661);
-    --color-primary-500: oklch(0.685 0.169 237.323);
-    --color-primary-600: oklch(0.588 0.158 241.966);
-    --color-primary-700: oklch(0.5 0.134 242.749);
-    --color-primary-800: oklch(0.443 0.11 240.79);
-    --color-primary-900: oklch(0.391 0.09 240.876);
-    --color-primary-950: oklch(0.293 0.066 243.157);
+    --color-primary-50:  var(--color-sky-50);
+    --color-primary-100: var(--color-sky-100);
+    --color-primary-200: var(--color-sky-200);
+    --color-primary-300: var(--color-sky-300);
+    --color-primary-400: var(--color-sky-400);
+    --color-primary-500: var(--color-sky-500);
+    --color-primary-600: var(--color-sky-600);
+    --color-primary-700: var(--color-sky-700);
+    --color-primary-800: var(--color-sky-800);
+    --color-primary-900: var(--color-sky-900);
+    --color-primary-950: var(--color-sky-950);
+
+    /*--color-primary-50:  var(--color-cyan-50);*/
+    /*--color-primary-100: var(--color-cyan-100);*/
+    /*--color-primary-200: var(--color-cyan-200);*/
+    /*--color-primary-300: var(--color-cyan-300);*/
+    /*--color-primary-400: var(--color-cyan-400);*/
+    /*--color-primary-500: var(--color-cyan-500);*/
+    /*--color-primary-600: var(--color-cyan-600);*/
+    /*--color-primary-700: var(--color-cyan-700);*/
+    /*--color-primary-800: var(--color-cyan-800);*/
+    /*--color-primary-900: var(--color-cyan-900);*/
+    /*--color-primary-950: var(--color-cyan-950);*/
 
     --color-medium-50:  var(--color-gray-50);
     --color-medium-100: var(--color-gray-100);
@@ -35,13 +47,25 @@
 
 @layer components {
     .button {
-        @apply inline-flex items-center justify-center text-base font-medium text-center text-gray-900 focus:ring-4 dark:text-white;
-        @apply px-5 py-3;
+        @apply inline-flex items-center justify-center font-medium text-center text-gray-900 focus:ring-4 dark:text-white;
+        @apply px-5 py-3 text-base;
     }
 
     .button.small {
-        @apply px-4 py-2
+        @apply px-3 py-2 text-sm
     }
+
+    .button.large {
+        @apply px-5 py-3 text-lg;
+    }
+
+    .hover-shadow {
+        @apply hover:shadow-lg hover:shadow-sky-500/50 dark:hover:shadow-lg dark:hover:shadow-sky-800/80
+    }
+}
+
+@utility hover-scale {
+    @apply transition hover:scale-105 duration-300 ease-in-out hover:-translate-y-1
 }
 
 @utility outline-primary {
@@ -63,7 +87,9 @@
 }
 
 @utility button-primary {
+    @apply text-white;
     background-color: var(--color-primary-700);
+
     @variant hover {
         background-color: var(--color-primary-800);
     }
@@ -77,6 +103,26 @@
             --tw-ring-color: var(--color-primary-900);
         }
     }
+}
+
+@utility primary-gradient {
+    @apply bg-gradient-to-tr from-green-400 to-sky-600 hover:bg-gradient-to-bl focus:ring-green-200 dark:focus:ring-green-800;
+
+    /*background-color: var(--color-primary-700);*/
+
+    /*@variant hover {*/
+    /*    background-color: var(--color-primary-800);*/
+    /*}*/
+
+    /*@variant focus {*/
+    /*    --tw-ring-color: var(--color-primary-300);*/
+    /*}*/
+
+    /*@variant dark {*/
+    /*    @variant focus {*/
+    /*        --tw-ring-color: var(--color-primary-900);*/
+    /*    }*/
+    /*}*/
 }
 
 @utility button-medium {
