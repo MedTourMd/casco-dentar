@@ -7,12 +7,12 @@
             </a>
             <div class="flex items-center lg:order-2">
                 <a
-                    class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                    class="button button-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                     href="#"
                 >Log in</a
                 >
                 <a
-                    class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                    class="button button-primary rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                     href="#"
                 >Get started</a
                 >
@@ -20,7 +20,8 @@
                 <button
                     (click)="themeService.toggle()"
                     class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-                    type="button">
+                    type="button"
+                >
                     @if (themeService.isDark()) {
                         <app-icon class="w-5 h-5 text-white" [icon]="sun"/>
                     } @else {

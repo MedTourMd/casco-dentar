@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@plugin "flowbite/plugin";
+@plugin "flowbite-typography";
+@source "../node_modules/flowbite";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-primary-50: oklch(0.977 0.013 236.62);
+    --color-primary-100: oklch(0.951 0.026 236.824);
+    --color-primary-200: oklch(0.901 0.058 230.902);
+    --color-primary-300: oklch(0.828 0.111 230.318);
+    --color-primary-400: oklch(0.746 0.16 232.661);
+    --color-primary-500: oklch(0.685 0.169 237.323);
+    --color-primary-600: oklch(0.588 0.158 241.966);
+    --color-primary-700: oklch(0.5 0.134 242.749);
+    --color-primary-800: oklch(0.443 0.11 240.79);
+    --color-primary-900: oklch(0.391 0.09 240.876);
+    --color-primary-950: oklch(0.293 0.066 243.157);
+
+    --color-medium-50:  var(--color-gray-50);
+    --color-medium-100: var(--color-gray-100);
+    --color-medium-200: var(--color-gray-200);
+    --color-medium-300: var(--color-gray-300);
+    --color-medium-400: var(--color-gray-400);
+    --color-medium-500: var(--color-gray-500);
+    --color-medium-600: var(--color-gray-600);
+    --color-medium-700: var(--color-gray-700);
+    --color-medium-800: var(--color-gray-800);
+    --color-medium-900: var(--color-gray-900);
+    --color-medium-950: var(--color-gray-950);
+}
+
+@layer components {
+    .button {
+        @apply inline-flex items-center justify-center text-base font-medium text-center text-gray-900 focus:ring-4 dark:text-white;
+        @apply px-5 py-3;
+    }
+
+    .button.small {
+        @apply px-4 py-2
+    }
+}
+
+@utility outline-primary {
+    @apply border;
+    border-color: var(--color-primary-300);
+
+    @variant dark {
+        border-color: var(--color-primary-700);
+    }
+}
+
+@utility outline-medium {
+    @apply border;
+    border-color: var(--color-medium-300);
+
+    @variant dark {
+        border-color: var(--color-medium-700);
+    }
+}
+
+@utility button-primary {
+    background-color: var(--color-primary-700);
+    @variant hover {
+        background-color: var(--color-primary-800);
+    }
+
+    @variant focus {
+        --tw-ring-color: var(--color-primary-300);
+    }
+
+    @variant dark {
+        @variant focus {
+            --tw-ring-color: var(--color-primary-900);
+        }
+    }
+}
+
+@utility button-medium {
+    @variant hover {
+        background-color: var(--color-medium-100);
+    }
+
+    @variant focus {
+        --tw-ring-color: var(--color-medium-100);
+    }
+
+    @variant dark {
+        @variant hover {
+            background-color: var(--color-medium-700);
+        }
+
+        @variant focus {
+            --tw-ring-color: var(--color-medium-800);
+        }
+    }
+}

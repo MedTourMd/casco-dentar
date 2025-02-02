@@ -1,0 +1,8 @@
+@if (href()) {
+    <a
+        [class]="'button ' + colorClasses() + ' ' + borderClasses() + ' ' + roundnessClasses()"
+        [href]="href()"
+    >
+        <ng-content/>
+    </a>
+}

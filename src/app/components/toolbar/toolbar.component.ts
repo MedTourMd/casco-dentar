@@ -6,7 +6,6 @@ import { moon, sun } from "../../features/icons/icons";
 @Component({
     selector: "app-toolbar",
     templateUrl: "./toolbar.component.html",
-    styleUrl: "./toolbar.component.scss",
     imports: [IconComponent],
 })
 export class ToolbarComponent {
