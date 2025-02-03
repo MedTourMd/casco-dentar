@@ -1,0 +1,12 @@
+services:
+    casco-dentar:
+        build: .
+        restart: always
+        ports:
+            - "4000:4000"
+        networks:
+            - web
+
+networks:
+    web:
+        external: true

@@ -1,0 +1,7 @@
+.angular
+.dev
+.husky
+dist
+coverage
+node_modules
+playwright.config.ts

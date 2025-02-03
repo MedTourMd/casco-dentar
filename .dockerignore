@@ -1,0 +1,17 @@
+node_modules
+.editorconfig
+.gitignore
+.github
+.git
+.idea
+.pretierrc.json
+.prettierignore
+eslint.config.js
+.eslintignore
+biome.json
+*.md
+proxy/*
+docker-compose.yml
+.angular
+dist
+coverage
