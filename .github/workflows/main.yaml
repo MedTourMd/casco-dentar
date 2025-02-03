@@ -41,4 +41,4 @@ jobs:
                     host: 65.21.186.190
                     username: ${{ secrets.USERNAME }}
                     key: ${{ secrets.SSH_KEY }}
-                    script: /home/docker/deploy/deploy.sh /home/docker/MedTourMd/casco-dentar:latest
+                    script: /home/docker/deploy/deploy.sh /home/docker/MedTourMd/casco-dentar
