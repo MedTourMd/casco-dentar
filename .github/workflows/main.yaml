@@ -29,14 +29,15 @@ jobs:
                     context: .
                     push: true
                     tags: ghcr.io/MedTourMd/casco-dentar:latest
-deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-        -   name: Pull & run image on server
-            uses: appleboy/ssh-action@master
-            with:
-                host: 65.21.186.190
-                username: ${{ secrets.USERNAME }}
-                key: ${{ secrets.SSH_KEY }}
-                script: /home/docker/deploy/deploy.sh /home/docker/MedTourMd/casco-dentar:latest
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Pull & run image on server
+                uses: appleboy/ssh-action@master
+                with:
+                    host: 65.21.186.190
+                    username: ${{ secrets.USERNAME }}
+                    key: ${{ secrets.SSH_KEY }}
+                    script: /home/docker/deploy/deploy.sh /home/docker/MedTourMd/casco-dentar:latest
