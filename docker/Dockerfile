@@ -1,5 +1,4 @@
 FROM node:lts-alpine AS builder
-
 WORKDIR /app
 
 COPY package.json yarn.lock /app/
@@ -15,6 +14,10 @@ WORKDIR /app
 
 COPY --from=builder /app/dist /app/dist
 COPY package.json /app/dist/browser
+
+ARG VERSION
+ENV VERSION=${VERSION:-v0.0.0}
+RUN echo '{ "version:" "$VERSION" }' > /app/dist/browser/version.json
 
 CMD ["node", "/app/dist/server/server.mjs"]
 

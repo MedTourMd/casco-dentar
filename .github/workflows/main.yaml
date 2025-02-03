@@ -4,8 +4,27 @@ on:
     push:
         branches: [ main ]
 
+permissions:
+    contents: read
+
 jobs:
+    autolabeler:
+        runs-on: ubuntu-latest
+        permissions:
+            # write permission is required to create a github release
+            contents: write
+            # write permission is required for autolabeler
+            # otherwise, read permission is required at least
+            pull-requests: write
+        steps:
+            -   uses: release-drafter/release-drafter@v6
+                with:
+                    disable-releaser: true
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     build:
+        needs: autolabeler
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
@@ -29,6 +48,7 @@ jobs:
                     context: .
                     file: ./docker/Dockerfile
                     push: true
+                    build-args: VERSION=${{ needs.autolabeler.outputs.tag_name }}
                     tags: ghcr.io/medtourmd/casco-dentar:latest
 
     deploy:
