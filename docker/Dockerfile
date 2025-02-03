@@ -19,6 +19,7 @@ COPY package.json /app/dist/browser
 
 ARG VERSION
 ENV VERSION=${VERSION:-v0.0.1}
+RUN echo $VERSION
 RUN echo '{ "version:" "$VERSION" }'
 RUN echo '{ "version:" "$VERSION" }' > /app/dist/browser/version.json
 
