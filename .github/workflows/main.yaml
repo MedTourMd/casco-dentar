@@ -21,12 +21,13 @@ jobs:
                 with:
                     registry: ghcr.io
                     username: ${{ github.actor }}
-                    password: ${{ secrets.CR_PAT }}
+                    password: ${{ secrets.GITHUB_TOKEN }}
 
             -   name: Build and push to GitHub Packages
                 uses: docker/build-push-action@v6
                 with:
                     context: .
+                    file: ./docker/Dockerfile
                     push: true
                     tags: ghcr.io/MedTourMd/casco-dentar:latest
 

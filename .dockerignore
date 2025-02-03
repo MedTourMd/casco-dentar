@@ -11,7 +11,7 @@ eslint.config.js
 biome.json
 *.md
 proxy/*
-docker-compose.yml
+docker/docker-compose.yml
 .angular
 dist
 coverage
