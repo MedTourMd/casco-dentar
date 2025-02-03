@@ -36,7 +36,7 @@
     --color-medium-950: var(--color-gray-950);
 }
 
-@layer components {
+@layer base {
     .button {
         @apply inline-flex items-center justify-center font-medium text-center text-gray-900 focus:ring-4 dark:text-white;
         @apply px-5 py-3 text-base;
