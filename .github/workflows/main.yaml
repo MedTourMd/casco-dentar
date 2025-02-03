@@ -29,7 +29,7 @@ jobs:
                     context: .
                     file: ./docker/Dockerfile
                     push: true
-                    tags: ghcr.io/MedTourMd/casco-dentar:latest
+                    tags: ghcr.io/medtourmd/casco-dentar:latest
 
     deploy:
         needs: build
