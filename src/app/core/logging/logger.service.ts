@@ -64,6 +64,8 @@ export class Logger {
                 }
 
                 _message = message.replace(`[${scope}]`, "").trim();
+            } else {
+                scope = undefined;
             }
         }
 

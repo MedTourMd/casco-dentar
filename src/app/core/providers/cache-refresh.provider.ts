@@ -1,7 +1,7 @@
-import { isPlatformBrowser } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
-import { inject, PLATFORM_ID, provideAppInitializer } from "@angular/core";
-import { catchError, EMPTY, filter, map, switchMap, tap } from "rxjs";
+import { inject, isDevMode, provideAppInitializer } from "@angular/core";
+import { EMPTY, catchError, filter, map, switchMap, tap } from "rxjs";
+import { injectIsBrowser } from "../di-utils";
 import { Logger } from "../logging/logger.service";
 
 export function provideCacheRefresh() {
@@ -15,15 +15,14 @@ function getPackageJson() {
 }
 
 function invalidateCacheAndRefresh() {
-    const isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    if (!isBrowser) {
+    if (!injectIsBrowser() || isDevMode()) {
         return;
     }
 
     const logger = inject(Logger);
     const getVersions$ = getPackageJson().pipe(
-        map((res) => res.version),
-        map((newVersion) => {
+        map(res => res.version),
+        map(newVersion => {
             const oldVersion = localStorage.getItem("casco-frontend-version");
             logger.info("[CACHES] Old version:", oldVersion);
             logger.info("[CACHES] New version:", newVersion);
@@ -38,15 +37,15 @@ function invalidateCacheAndRefresh() {
 
     const deleteCaches$ = setVersions$.pipe(
         switchMap(() => caches.keys()),
-        switchMap((keys) => {
+        switchMap(keys => {
             logger.info("[CACHES] Deleting old caches:", keys);
-            return Promise.all(keys.map((key) => caches.delete(key)));
+            return Promise.all(keys.map(key => caches.delete(key)));
         }),
     );
 
     return deleteCaches$.pipe(
         tap(() => location.reload()),
-        catchError((err) => {
+        catchError(err => {
             logger.info("[CACHES] Error during cache invalidation:", err);
             return EMPTY;
         }),

@@ -23,7 +23,6 @@ export class ThemeService {
 
     activateTheme() {
         if (!this.#isBrowser) {
-            this.#logger.info("Is not browser skip");
             return;
         }
 

@@ -54,7 +54,8 @@
                             {
                                 "glob": "**/*",
                                 "input": "public"
-                            }
+                            },
+                            "src/package.json"
                         ],
                         "styles": ["src/styles.css"],
                         "scripts": [],
