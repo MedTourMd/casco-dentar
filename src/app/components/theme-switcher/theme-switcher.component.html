@@ -1,0 +1,11 @@
+<button
+    (click)="themeService.toggle()"
+    class="text-gray-500 cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+    type="button"
+>
+    @if (themeService.isDark()) {
+        <app-icon class="w-5 h-5 text-white" [icon]="sun"/>
+    } @else {
+        <app-icon class="w-5 h-5" [icon]="moon"/>
+    }
+</button>
