@@ -1,5 +1,6 @@
-import { computed, Injectable, signal } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
 import { injectIsBrowser } from "../di-utils";
+import { Logger } from "../logging/logger.service";
 
 export const Themes = {
     dark: "dark",
@@ -16,11 +17,13 @@ const themeKey = "currentTheme";
 })
 export class ThemeService {
     readonly #isBrowser = injectIsBrowser();
+    readonly #logger = inject(Logger);
     readonly current = signal<Theme>(Themes.light);
     readonly isDark = computed(() => this.current() === Themes.dark);
 
     activateTheme() {
         if (!this.#isBrowser) {
+            this.#logger.info("Is not browser skip");
             return;
         }
 
@@ -35,7 +38,7 @@ export class ThemeService {
             this.current.set(Themes.light);
         }
 
-        console.log("PreferencesService theme toggled: ", this.current());
+        this.#logger.info("[THEME] Activated theme: ", this.current());
     }
 
     toggle(theme?: keyof typeof Themes) {

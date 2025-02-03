@@ -8,7 +8,10 @@ import { ThemeService } from "./core/services/theme.service";
     selector: "app-root",
     imports: [ToolbarComponent, RouterOutlet],
     template: `
-        <app-toolbar />
+        <div class="mb-14">
+            <app-toolbar />
+        </div>
+
         <router-outlet />
     `,
 })
