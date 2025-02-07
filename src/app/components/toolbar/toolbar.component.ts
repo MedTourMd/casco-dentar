@@ -3,7 +3,7 @@ import { Component, signal } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { IconComponent } from "../../features/icons/icon/icon.component";
 import { bars, close } from "../../features/icons/icons";
-import { ThemeSwitcherComponent } from "../theme-switcher/theme-switcher.component";
+import { ThemeSwitcherComponent } from "../../features/theme/theme-switcher/theme-switcher.component";
 
 interface NavItem {
     readonly title: string;

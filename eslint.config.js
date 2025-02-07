@@ -13,6 +13,7 @@ module.exports = tseslint.config(
         ],
         processor: angular.processInlineTemplates,
         rules: {
+            "@angular-eslint/component-class-suffix": "off",
             "@angular-eslint/directive-selector": [
                 "error",
                 {
@@ -33,7 +34,10 @@ module.exports = tseslint.config(
     },
     {
         files: ["**/*.html"],
-        extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+        extends: [
+            ...angular.configs.templateRecommended,
+            ...angular.configs.templateAccessibility,
+        ],
         rules: {},
     },
 );

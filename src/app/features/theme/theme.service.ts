@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { injectIsBrowser } from "../di-utils";
-import { Logger } from "../logging/logger.service";
+import { injectIsBrowser } from "../../core/di-utils";
+import { Logger } from "../../core/logging/logger.service";
 
 export const Themes = {
     dark: "dark",
@@ -18,7 +18,8 @@ const themeKey = "currentTheme";
 export class ThemeService {
     readonly #isBrowser = injectIsBrowser();
     readonly #logger = inject(Logger);
-    readonly current = signal<Theme>(Themes.light);
+    readonly #current = signal<Theme>(Themes.light);
+    readonly current = this.#current.asReadonly();
     readonly isDark = computed(() => this.current() === Themes.dark);
 
     activateTheme() {
@@ -32,12 +33,12 @@ export class ThemeService {
 
         document.documentElement.classList.toggle(Themes.dark, isDark);
         if (isDark) {
-            this.current.set(Themes.dark);
+            this.#current.set(Themes.dark);
         } else {
-            this.current.set(Themes.light);
+            this.#current.set(Themes.light);
         }
 
-        this.#logger.info("[THEME] Activated theme: ", this.current());
+        this.#logger.info("[THEME] Activated theme: ", this.#current());
     }
 
     toggle(theme?: keyof typeof Themes) {

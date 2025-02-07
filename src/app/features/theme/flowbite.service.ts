@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import type FlowBiteType from "flowbite";
-import { injectIsBrowser } from "../di-utils";
-import { Logger } from "../logging/logger.service";
+import { injectIsBrowser } from "../../core/di-utils";
+import { Logger } from "../../core/logging/logger.service";
 
 @Injectable({
     providedIn: "root",

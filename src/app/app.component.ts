@@ -1,8 +1,8 @@
 import { Component, inject, type OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
-import { FlowbiteService } from "./core/services/flowbite.service";
-import { ThemeService } from "./core/services/theme.service";
+import { FlowbiteService } from "./features/theme/flowbite.service";
+import { ThemeService } from "./features/theme/theme.service";
 
 @Component({
     selector: "app-root",

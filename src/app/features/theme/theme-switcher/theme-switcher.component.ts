@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
-import { ThemeService } from "../../core/services/theme.service";
-import { IconComponent } from "../../features/icons/icon/icon.component";
-import { moon, sun } from "../../features/icons/icons";
+import { IconComponent } from "../../icons/icon/icon.component";
+import { moon, sun } from "../../icons/icons";
+import { ThemeService } from "../theme.service";
 
 @Component({
     selector: "app-theme-switcher",

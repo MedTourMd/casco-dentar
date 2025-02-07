@@ -5,4 +5,8 @@ export const routes: Routes = [
         path: "",
         loadComponent: () => import("./pages/landing-page/landing-page.component"),
     },
+    {
+        path: "**",
+        redirectTo: "",
+    },
 ];
